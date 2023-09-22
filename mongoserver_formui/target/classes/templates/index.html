@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Server Management</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Server Management</h1>
+
+    <!-- Create Server Form -->
+    <h2>Create Server</h2>
+    <form th:action="@{/servers/create}" method="post">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+        <br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="language">Language:</label>
+        <input type="text" id="language" name="language" required>
+        <br><br>
+        <label for="framework">Framework:</label>
+        <input type="text" id="framework" name="framework" required>
+        <br><br>
+        <button type="submit">Create</button>
+    </form>
+  
+    <br />
+    <!-- List of Servers -->
+    <h2>List of Servers</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Language</th>
+                <th>Framework</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use Thymeleaf to loop through the list of servers -->
+            <tr th:each="server : ${servers}">
+                <td th:text="${server.id}"></td>
+                <td th:text="${server.name}"></td>
+                <td th:text="${server.language}"></td>
+                <td th:text="${server.framework}"></td>
+                <td>
+                    <a th:href="@{'/servers/' + ${server.id}}" >View</a>
+                    <a th:href="@{'/servers/' + ${server.id} + '/edit' }">Edit</a>
+                    <a th:href="@{'/servers/' + ${server.id} + '/delete'}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Server Details</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h2>Server Details</h2>
+    
+    <!-- Display server details -->
+    <div th:if="${server != null}">
+        <p>ID: <span th:text="${server.id}"></span></p>
+        <p>Name: <span th:text="${server.name}"></span></p>
+        <p>Language: <span th:text="${server.language}"></span></p>
+        <p>Framework: <span th:text="${server.framework}"></span></p>
+    </div>
+    
+    <!-- Display search results (if available) -->
+    <div th:if="${searchResults != null}">
+        <h3>Search Results</h3>
+        <ul>
+            <li th:each="result : ${searchResults}">
+                <!-- Display search results here -->
+                <p>ID: <span th:text="${result.id}"></span></p>
+                <p>Name: <span th:text="${result.name}"></span></p>
+                <!-- Add more fields as needed -->
+            </li>
+        </ul>
+    </div>
+
+    <!-- Add navigation or other content as needed -->
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Server</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h2>Edit Server</h2>
+    <form th:action="@{/servers/edit}" method="post">
+        <label for="editId">Server ID to Edit:</label>
+        <input type="text" id="editId" name="id" th:value="${server.id}" required>
+        <br><br>
+        <label for="editName">Edit Name:</label>
+        <input type="text" id="editName" name="name" th:value="${server.name}" required>
+        <br><br>
+        <label for="editLanguage">Edit Language:</label>
+        <input type="text" id="editLanguage" name="language" th:value="${server.language}" required>
+        <br><br>
+        <label for="editFramework">Edit Framework:</label>
+        <input type="text" id="editFramework" name="framework" th:value="${server.framework}" required>
+        <br><br>
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>
